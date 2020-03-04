@@ -1,0 +1,19 @@
+{
+  "name": "keyserver",
+  "version": "1.0.0",
+  "description": "RESTFUL API for licence keys generator",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/youcefislam/KeyGenerator.git"
+  },
+  "author": "CUB1 Trainee",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/youcefislam/KeyGenerator/issues"
+  },
+  "homepage": "https://github.com/youcefislam/KeyGenerator#readme"
+}
