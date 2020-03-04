@@ -43,7 +43,7 @@ const KeysList = ({ route }) => {
     const DeleteItem = (id_key) => {
 
         const data = { id_key: id_key };
-
+        
         fetch('http://192.168.43.82:3000/key/delete', {   //make a post request for the key generator api
             method: 'POST',
             headers: {
@@ -83,7 +83,7 @@ const KeysList = ({ route }) => {
                 data={Keys}                                             // flat List Interface
                 renderItem={({ item }) => ListItem({ item })}   // render items using ListItem function GoTo(ListItem)
                 keyExtractor={(item) => item.id_key}           
-            />        
+            /> 
         </SafeAreaView>
     );
 

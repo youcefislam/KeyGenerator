@@ -9,14 +9,14 @@ app.use(express.static("public"));
 app.use(express.json({ limit: "1mb" }));
 app.set('json spaces', 40);
 
-//create mySql connection
+//create mySql connection                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       
 connection = mysql.createConnection({
     host: 'localhost',
     user: 'root',
     password: 'password',
-    database: 'mydb'
+    database: 'mydb'                                                
 });
-connection.connect();
+connection.connect();                                                                       
 
 
 
@@ -127,7 +127,7 @@ app.post("/key/create", async (req, res) => {
 
 
 // Delete request , render a json response of generated keys
-app.post("/delete", (req, res)=>{
+app.post("/key/delete", (req, res)=>{
 	const id_key = req.body.id_key; 
 	const query = "delete from keysTable where id_key = ?";
 	connection.query(query, id_key, (err)=>{            // delete query 
