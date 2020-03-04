@@ -83,11 +83,17 @@ const KeysList = ({ route }) => {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
+        backgroundColor: '#FA6148',
     },
 
 
     item: {
         flexDirection: 'row',
+        backgroundColor: '#FDFCFB',
+        padding: 10,
+        marginVertical: 4,
+        marginHorizontal: 10,
+        borderRadius: 10,
     },
 
 
@@ -96,14 +102,25 @@ const styles = StyleSheet.create({
         marginLeft: 2,
         alignItems: 'center',
         justifyContent: 'center',
+        borderStyle: 'solid',
+        borderColor: '#FA6148',
+        borderWidth: 1,
+        borderRadius: 10
     },
     buttonText: {
         color: '#c71f16',
     },
     sortByButton: {
         alignItems: "center",
+        height: 23, width: '97%',
+        backgroundColor: "#FA6148",
+        borderWidth: 1,
+        borderColor: 'white',
+        borderBottomStartRadius: 5,
+        borderBottomEndRadius: 5
     },
     sortBytext: {
+        color: 'white',
         fontSize: 15
     },
     copyButton: {
@@ -112,6 +129,11 @@ const styles = StyleSheet.create({
     serialText: {
         flex: 4,
         fontSize: 15,
+        borderLeftWidth: 1,
+        paddingLeft: 5,
+        borderLeftColor: '#c71f16',
+        color: '#242424',
+        marginLeft: 5
     },
 });
 

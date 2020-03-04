@@ -2,9 +2,6 @@ import 'react-native-gesture-handler';
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import {
-  StyleSheet,
-} from 'react-native';
 import Home from './Screens/Home';
 import KeyList from './Screens/KeyList';
 
@@ -20,10 +17,6 @@ const App = () => {
     </NavigationContainer>
   )
 }
-
-const styles = StyleSheet.create({
-  
-});
  
 
 export default App;

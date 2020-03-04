@@ -65,9 +65,12 @@ const Home = ({ navigation }) => {
   );
 };
 
+
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: 'white',
     alignItems: 'center',
     justifyContent: "space-around",
   },
@@ -79,10 +82,26 @@ const styles = StyleSheet.create({
   generateButton: {
     backgroundColor: 'white',
     marginTop: 50,
+    marginBottom: 10,
+    borderStyle: 'solid',
+    borderWidth: 2,
+    borderColor: '#FA6148',
+    borderRadius: 20,
     alignItems: 'center',
   },
   generateButtonText: {
     fontSize: 20,
+    color: '#FA6148',
+  },
+
+  inpuField: {
+    marginBottom: 20,
+    fontSize: 15,
+    backgroundColor: "#FDFCFB",
+    borderBottomWidth: 1,
+    borderColor: '#E7200D',
+    width: 200,
+    height: 40,
   },
 });
 
