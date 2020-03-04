@@ -1,43 +1,44 @@
-# Miftah-KeysGenerator
-Miftah is a license keys generator API, comes whith a React Native mobile app.
 
-## Getting Started
+# Changelog
+All notable changes to this project will be documented in this file.
 
-These instructions will get you a copy of the project up and running on your mobile phone or by direct using the API. 
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
+and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-### Installing
+## [Unreleased]
 
-How to get and install the app 
-
-Download the app.apk from ????
-
-Install the app
-
-End with an example of getting some data out of the system or using it for a little demo
-
-## Using the APP
-
-After opening the app you have to fill the fields and click the Generate button. This will get you a list of your keys sorted by date.
-
-## Built With
-
-* [ReactNative] (https://reactnative.dev/) - The mobile framework used
-* [NodeJs] (https://nodejs.org/en/) - The web framework used
+## [1.0.0] - 2020-03-02
+### First Added
+--RESTFUL API for the generator app.
+- Start by defining a generator function to generate a random keys.
+- Create a Post Route to generate keys for specefic name.
+- Create Mysql database to store the generated keys.
+- Define Mysql queries for inserting and deleting.
+--React Native mobile app .
+- Create a simple input for the name.
+- Create fetch request to send a generate request to the server.
+- Add a button "Generate".
+- Create list to show the generated keys.
+- Add fetch  to send a delete request to the server.
+- Add delete button
 
 
-## Versioning
-
-We use [SemVer](http://semver.org/) for versioning. For the versions available.
-
-## Authors
-
-*-** CUB1 ** - *Initial work* - [Miftah-KeysGenerator](https://github.com/youcefislam/KeyGenerator)
+## [2.0.0] - 2020-03-03
+### Added
+- Add styling to the app.
 
 
-## License
+## [3.0.0] - 2020-03-04
+### Added
+- Add checkbox for the upperCase choise.
+- Add fields for the arguments(charts, groupes ,number).
+- Add copy button to copy a key to the clipboard.
 
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+### Changed
+- Add charts, groupes ,number to the generator function .
+- Update the Routes.
+- Improve argument against commit logs.
+- Improve the queries to avoid the sql injection.
+- Improve the app speed.
+- Minimize the app size.
 
-## Acknowledgments
-
-* Hat tip to anyone whose code was used
