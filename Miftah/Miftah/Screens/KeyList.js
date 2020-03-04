@@ -79,13 +79,11 @@ const KeysList = ({ route }) => {
 
     return (
         <SafeAreaView style={styles.container}>
-            <View>
             <FlatList
                 data={Keys}                                             // flat List Interface
                 renderItem={({ item }) => ListItem({ item })}   // render items using ListItem function GoTo(ListItem)
                 keyExtractor={(item) => item.id_key}           
-            />
-            </View>            
+            />        
         </SafeAreaView>
     );
 

@@ -1,6 +1,6 @@
 {
   "name": "keyserver",
-  "version": "1.0.0",
+  "version": "3.0.0",
   "description": "RESTFUL API for licence keys generator",
   "main": "index.js",
   "scripts": {

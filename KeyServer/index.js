@@ -21,15 +21,20 @@ connection.connect();
 
 
 //key Generator function
-const generate = () => {
-    const character = "1234567890ABCDEFGHIJKLMNOPQRSVUSWXYZ";
+const generate = (charts, group, upper) => {
+    const num = "1234567890";
+    const upperCase = "ABCDEFGHIJKLMNOPQRSVUSWXYZ";
+    const lowerCase = "abcdefghijklmnopqrsvuswxyz";
+
+    if (upper == true) character = num + upperCase;
+    else character = num + lowerCase;
 
     var myRandom = 0,
         myTextContent = "";
-    for (i = 0; i < 20; i++) {
+    for (i = 0; i < group * charts; i++) {
         myRandom = Math.floor(Math.random() * character.length);
         myTextContent += character[myRandom];
-        if (((i + 1) % 5 == 0) && (i != 0) && (i + 1 != 20)) {
+        if (((i + 1) % charts == 0) && (i != 0) && (i + 1 != group * charts)) {
             myTextContent += "-"
         }
     }
@@ -37,7 +42,7 @@ const generate = () => {
 }
 
 // generating the requested keys and put them into an array  
-const genKeys = (id_user) => {
+const genKeys = (charts, groupes, number, id_user, upper) => {
 
     var arr = [];
     //get today's date
@@ -45,8 +50,8 @@ const genKeys = (id_user) => {
     //YYYY-MM-DD format
     const mysqlDate = date.toISOString().split("T")[0];
 
-    for (let i = 0; i < 10; i++) {
-        var serial = generate();    // go to(generate function)
+    for (let i = 0; i < number; i++) {
+        var serial = generate(charts, groupes, upper);    // go to(generate function)
         arr.push([
             id_user,
             serial,
@@ -67,7 +72,7 @@ const buildResponse = (keysArray, id) => {
                 id_user: keysArray[i][0],
                 serial: keysArray[i][1],
                 key_date: keysArray[i][2]
-            });                                 
+            });
         }
         return array;
     };
@@ -76,10 +81,15 @@ const buildResponse = (keysArray, id) => {
 //Post request , render a json array of generated keys
 app.post("/key/create", async (req, res) => {
 
-    if (req.body.name === '' )
+    if (req.body.name === '' || req.body.charts == '' || req.body.groupes == '' || req.body.number == '')
         res.json({ created: false });
     else {
-        var name = req.body.name;
+        var name = req.body.name,
+            charts = parseInt(req.body.charts),  //number of character by groupe { [x] [x] [x] [x] }-{ [x] [x] [x] [x] }-{ [x] [x] [x] [x] }
+            groupes = parseInt(req.body.groupes), //number of groupes {xxxx}-{xxxx}-{xxxx}-{xxxx}
+            number = parseInt(req.body.number),  //number of keys
+            upper = req.body.upper;  //uppercase's code = true or false 
+
         var id_user;
         await connection.query("select * from usersTable where name = ?", name, (err, result) => { // testing if the name exist before
             if (err) throw err;
@@ -90,7 +100,7 @@ app.post("/key/create", async (req, res) => {
                     if (err) throw err;
 
                     //Save the keys to the database
-                    var keysArray = genKeys(result.insertId); //got to genkeys function 
+                    var keysArray = genKeys(charts, groupes, number, result.insertId, upper); //got to genkeys function 
                     const query = "insert into keysTable(id_user, serial, key_date) values ?";
 
                     connection.query(query, [keysArray], (err, result) => { // insert the keys array to the database
@@ -101,7 +111,7 @@ app.post("/key/create", async (req, res) => {
                 });
             } else {
                 //Save the keys to the database
-                var keysArray = genKeys(id_user.id_user);
+                var keysArray = genKeys(charts, groupes, number, id_user.id_user, upper);
                 const query = "insert into keysTable(id_user, serial, key_date) values ?";
 
                 connection.query(query, [keysArray], (err, result) => {
