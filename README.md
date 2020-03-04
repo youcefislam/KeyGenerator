@@ -1,5 +1,5 @@
-# Meftah-KeysGenerator
-Meftah is a license keys generator API, comes whith a React Native mobile app.
+# Miftah-KeysGenerator
+Miftah is a license keys generator API, comes whith a React Native mobile app.
 
 ## Getting Started
 
