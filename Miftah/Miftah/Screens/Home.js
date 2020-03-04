@@ -34,7 +34,7 @@ const Home = ({ navigation }) => {
     };
 
     // requesting key from the server
-    fetch('http://192.168.43.82:3000/key/create', {
+    fetch('http://aymengh-fjnuc.run-us-west2.goorm.io/key/create', {
       method: 'POST',
       headers: {
         Accept: 'application/json',

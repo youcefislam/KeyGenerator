@@ -12,7 +12,7 @@ app.set('json spaces', 40);
 //create mySql connection                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       
 connection = mysql.createConnection({
     host: 'localhost',
-    user: 'root',
+    user: 'admin',
     password: 'password',
     database: 'mydb'                                                
 });

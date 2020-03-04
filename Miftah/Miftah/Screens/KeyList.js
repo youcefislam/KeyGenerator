@@ -44,7 +44,7 @@ const KeysList = ({ route }) => {
 
         const data = { id_key: id_key };
         
-        fetch('http://192.168.43.82:3000/key/delete', {   //make a post request for the key generator api
+        fetch('http://aymengh-fjnuc.run-us-west2.goorm.io/key/delete', {   //make a post request for the key generator api
             method: 'POST',
             headers: {
                 Accept: 'application/json',
