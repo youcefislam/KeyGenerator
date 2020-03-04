@@ -7,6 +7,8 @@ import {
     TouchableOpacity,
     SafeAreaView,
     FlatList,
+    Clipboard,
+    ToastAndroid
 } from 'react-native'
 
 
@@ -18,6 +20,9 @@ const KeysList = ({ route }) => {
     const ListItem = ({ item }) => {
         return (
             <View style={styles.item}>
+                <TouchableOpacity style={styles.copyButton} onPress={() => CopyItem(item.serial)}>
+                    <Text style={styles.buttonText}>Copy</Text>
+                </TouchableOpacity>
                 <Text style={styles.serialText}>{item.serial}</Text>
                 <TouchableOpacity style={styles.deleteButton} onPress={() => DeleteItem(item.id_key)}>
                     <Text style={styles.buttonText}>Delete</Text>
@@ -27,6 +32,12 @@ const KeysList = ({ route }) => {
 
     };
 
+    // Copy to clipboard Function
+    const CopyItem = (serial) => {
+        Clipboard.setString(serial);
+        ToastAndroid.show('Key Copied !', ToastAndroid.SHORT);
+    }
+    //end of Clipboard Function
 
     //Delete Keys Function (by ID)
     const DeleteItem = (id_key) => {
@@ -46,13 +57,14 @@ const KeysList = ({ route }) => {
                     return response.json();
                 } else {
                     throw new Error('Something went wrong on our api server'); 
-                }
+                }                
             })
             .then((responseJson) => {
                 if (responseJson.deleted == true) {      // verify if the request has done to delete it from our flat list
                     setKeys((prevKeys) => {
                         return prevKeys.filter(item => item.id_key != id_key)
                     });
+                    ToastAndroid.show('Key Deleted !', ToastAndroid.SHORT);
                 }else{
                     alert("Something went wrong on our api server !"); 
                 }
@@ -73,8 +85,7 @@ const KeysList = ({ route }) => {
                 renderItem={({ item }) => ListItem({ item })}   // render items using ListItem function GoTo(ListItem)
                 keyExtractor={(item) => item.id_key}           
             />
-            </View>
-            
+            </View>            
         </SafeAreaView>
     );
 
